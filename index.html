@@ -1,84 +1,167 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>FraudGuard Commerce - Detecção Inteligente de Fraude</title>
-    <link rel="stylesheet" href="style.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Checkout Seguro</title>
+  <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <header class="header">
-        <div class="container">
-            <h1 class="logo">FraudGuard Commerce</h1>
-            <p class="tagline">Sistema de E-commerce com Detecção de Fraude</p>
+  <!-- Header -->
+  <header class="header">
+    <div class="container">
+      <h1 class="logo">Checkout Seguro</h1>
+      <p class="tagline">Preencha os dados abaixo para concluir sua transação</p>
+    </div>
+  </header>
+
+  <!-- Main -->
+  <main class="main">
+    <div class="checkout-container">
+      <div class="checkout-header">
+        <h2>Pagamento</h2>
+        <p>Insira as informações do cartão e da transação</p>
+      </div>
+
+      <form action="/predict" method="post" class="checkout-form">
+
+        <!-- Informações do Cartão -->
+        <div class="form-section">
+          <h3>Informações do Cartão</h3>
+          <div class="form-row">
+            <div class="form-group">
+              <label for="card_name">Nome do Titular</label>
+              <input type="text" id="card_name" name="card_name" required placeholder="Nome completo como no cartão">
+            </div>
+            <div class="form-group">
+              <label for="card_type">Tipo de Cartão</label>
+              <select id="card_type" name="card_type" required>
+                <option value="">Selecione</option>
+                <option value="credit">Crédito</option>
+                <option value="debit">Débito</option>
+              </select>
+            </div>
+          </div>
+
+          <div class="form-row">
+            <div class="form-group">
+              <label for="card_number">Número do Cartão</label>
+              <input type="text" id="card_number" name="card_number" required placeholder="XXXX XXXX XXXX XXXX" maxlength="19">
+            </div>
+            <div class="form-group">
+              <label for="cvv">CVV</label>
+              <input type="password" id="cvv" name="cvv" required placeholder="123" maxlength="4">
+            </div>
+          </div>
+
+          <div class="form-row">
+            <div class="form-group">
+              <label for="expiry_date">Validade</label>
+              <input type="text" id="expiry_date" name="expiry_date" required placeholder="MM/AA" maxlength="5">
+            </div>
+          </div>
         </div>
-    </header>
 
-    <main class="main">
-        <div class="container">
-            <section class="hero">
-                <h2>Escolha uma Categoria</h2>
-                <p>Selecione o tipo de serviço ou produto desejado</p>
-            </section>
+        <!-- Detalhes da Transação -->
+        <div class="form-section">
+          <h3>Detalhes da Transação</h3>
+        <div class="form-section2">
+          <h3>Escolha seu produto</h3> <div/>
 
-            <section class="categories">
-                <div class="category-grid">
-                    <div class="category-card">
-                        <div class="card-icon">✈️</div>
-                        <h3>Travel</h3>
-                        <p>Passagens aéreas, hotéis e pacotes de viagem para destinos nacionais e internacionais.</p>
-                        <div class="card-price">R$ 1.299,00</div>
-                        <a href="checkout.html?category=travel&amount=1299.00" class="btn btn-primary">Adicionar ao Carrinho</a>
-                    </div>
+          <!-- Categorias como botões -->
+          <div class="category-selector">
+            <label class="category-card">
+              <input type="radio" name="category" value="travel" required>
+              <div class="category-content">
+                ✈️ <span>Travel</span>
+              </div>
+            </label>
 
-                    <div class="category-card">
-                        <div class="card-icon">📱</div>
-                        <h3>Electronics</h3>
-                        <p>Smartphones, notebooks, tablets e os mais modernos dispositivos eletrônicos.</p>
-                        <div class="card-price">R$ 2.499,00</div>
-                        <a href="checkout.html?category=electronics&amount=2499.00" class="btn btn-primary">Adicionar ao Carrinho</a>
-                    </div>
+            <label class="category-card">
+              <input type="radio" name="category" value="electronics">
+              <div class="category-content">
+                💻 <span>Electronics</span>
+              </div>
+            </label>
 
-                    <div class="category-card">
-                        <div class="card-icon">👔</div>
-                        <h3>Clothing</h3>
-                        <p>Roupas e acessórios de alta qualidade para todas as ocasiões e estilos.</p>
-                        <div class="card-price">R$ 299,00</div>
-                        <a href="checkout.html?category=clothing&amount=299.00" class="btn btn-primary">Adicionar ao Carrinho</a>
-                    </div>
+            <label class="category-card">
+              <input type="radio" name="category" value="clothing">
+              <div class="category-content">
+                👕 <span>Clothing</span>
+              </div>
+            </label>
 
-                    <div class="category-card">
-                        <div class="card-icon">🍽️</div>
-                        <h3>Restaurants</h3>
-                        <p>Delivery de restaurantes premium e experiências gastronômicas exclusivas.</p>
-                        <div class="card-price">R$ 89,00</div>
-                        <a href="checkout.html?category=restaurants&amount=89.00" class="btn btn-primary">Adicionar ao Carrinho</a>
-                    </div>
+            <label class="category-card">
+              <input type="radio" name="category" value="restaurants">
+              <div class="category-content">
+                🍽️ <span>Restaurants</span>
+              </div>
+            </label>
 
-                    <div class="category-card">
-                        <div class="card-icon">🛒</div>
-                        <h3>Groceries</h3>
-                        <p>Produtos alimentícios frescos e itens essenciais para o seu dia a dia.</p>
-                        <div class="card-price">R$ 156,00</div>
-                        <a href="checkout.html?category=groceries&amount=156.00" class="btn btn-primary">Adicionar ao Carrinho</a>
-                    </div>
+            <label class="category-card">
+              <input type="radio" name="category" value="groceries">
+              <div class="category-content">
+                🛒 <span>Groceries</span>
+              </div>
+            </label>
+          </div>
 
-                    <div class="category-card">
-                        <div class="card-icon">🎮</div>
-                        <h3>Gaming</h3>
-                        <p>Consoles, jogos e acessórios para gamers de todos os níveis.</p>
-                        <div class="card-price">R$ 3.299,00</div>
-                        <a href="checkout.html?category=gaming&amount=3299.00" class="btn btn-primary">Adicionar ao Carrinho</a>
-                    </div>
-                </div>
-            </section>
+          <!-- Campos normais -->
+          <div class="form-row">
+            <div class="form-group">
+              <label for="amount">Valor da Compra (R$)</label>
+              <input type="number" id="amount" name="amount" step="0.01" min="0" required placeholder="0.00">
+            </div>
+            <div class="form-group">
+              <label for="transaction_type">Tipo de Transação</label>
+              <select id="transaction_type" name="transaction_type" required>
+                <option value="">Selecione</option>
+                <option value="purchase">Compra</option>
+                <option value="withdrawal">Saque</option>
+              </select>
+            </div>
+          </div>
         </div>
-    </main>
 
-    <footer class="footer">
-        <div class="container">
-            <p>&copy; 2025 FraudGuard Commerce. Sistema desenvolvido para detecção de fraude em transações.</p>
+        <!-- Informações do Dispositivo -->
+        <div class="form-section">
+          <h3>Informações do Dispositivo e Localização</h3>
+          <div class="form-row">
+            <div class="form-group">
+              <label for="device">Tipo de Dispositivo</label>
+              <select id="device" name="device" required>
+                <option value="">Selecione</option>
+                <option value="desktop">Desktop</option>
+                <option value="mobile">Mobile</option>
+                <option value="tablet">Tablet</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <label for="location">Localização</label>
+              <select id="location" name="location" required>
+                <option value="">Selecione</option>
+                <option value="saopaulo">São Paulo</option>
+                <option value="newyork">New York</option>
+                <option value="london">London</option>
+              </select>
+            </div>
+          </div>
         </div>
-    </footer>
+
+        <!-- Botões -->
+        <div class="form-actions">
+          <button type="submit" class="btn btn-primary btn-large">Finalizar Compra</button>
+          <a href="#" class="btn btn-secondary btn-large">Voltar</a>
+        </div>
+      </form>
+    </div>
+  </main>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="container">
+      <p>&copy; 2025 Checkout Seguro. Todos os direitos reservados.</p>
+    </div>
+  </footer>
 </body>
 </html>
