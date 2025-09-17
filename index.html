@@ -3,19 +3,18 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Checkout Seguro</title>
+  <title>Detector de Fraude - FraudGuard</title>
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
   <!-- Header -->
   <header class="header">
     <div class="container">
-      <h1 class="logo">Checkout Seguro</h1>
+      <h1 class="logo">FraudGuard - Checkout Seguro</h1>
       <p class="tagline">Preencha os dados abaixo para concluir sua transação</p>
     </div>
   </header>
 
-  <!-- Main -->
   <main class="main">
     <div class="checkout-container">
       <div class="checkout-header">
@@ -25,7 +24,6 @@
 
       <form action="/predict" method="post" class="checkout-form">
 
-        <!-- Informações do Cartão -->
         <div class="form-section">
           <h3>Informações do Cartão</h3>
           <div class="form-row">
@@ -62,13 +60,9 @@
           </div>
         </div>
 
-        <!-- Detalhes da Transação -->
         <div class="form-section">
           <h3>Detalhes da Transação</h3>
-        <div class="form-section2">
-          <h3>Escolha seu produto</h3> <div/>
 
-          <!-- Categorias como botões -->
           <div class="category-selector">
             <label class="category-card">
               <input type="radio" name="category" value="travel" required>
@@ -106,7 +100,6 @@
             </label>
           </div>
 
-          <!-- Campos normais -->
           <div class="form-row">
             <div class="form-group">
               <label for="amount">Valor da Compra (R$)</label>
@@ -116,14 +109,15 @@
               <label for="transaction_type">Tipo de Transação</label>
               <select id="transaction_type" name="transaction_type" required>
                 <option value="">Selecione</option>
-                <option value="purchase">Compra</option>
-                <option value="withdrawal">Saque</option>
+                <option value="pos">POS (Maquininha)</option>
+                <option value="banktransfer">Transferência de Banco</option>
+                <option value="online">Online</option>
+                <option value="atm">ATM Withdrawal (Caixa Eletrônico)</option>
               </select>
             </div>
           </div>
         </div>
 
-        <!-- Informações do Dispositivo -->
         <div class="form-section">
           <h3>Informações do Dispositivo e Localização</h3>
           <div class="form-row">
@@ -131,7 +125,7 @@
               <label for="device">Tipo de Dispositivo</label>
               <select id="device" name="device" required>
                 <option value="">Selecione</option>
-                <option value="desktop">Desktop</option>
+                <option value="laptop">Laptop</option>
                 <option value="mobile">Mobile</option>
                 <option value="tablet">Tablet</option>
               </select>
@@ -140,15 +134,16 @@
               <label for="location">Localização</label>
               <select id="location" name="location" required>
                 <option value="">Selecione</option>
-                <option value="saopaulo">São Paulo</option>
                 <option value="newyork">New York</option>
                 <option value="london">London</option>
+                <option value="mumbai">Mumbai</option>
+                <option value="sydney">Sydney</option>
+                <option value="tokyo">Tokyo</option>
               </select>
             </div>
           </div>
         </div>
 
-        <!-- Botões -->
         <div class="form-actions">
           <button type="submit" class="btn btn-primary btn-large">Finalizar Compra</button>
           <a href="#" class="btn btn-secondary btn-large">Voltar</a>
@@ -157,10 +152,9 @@
     </div>
   </main>
 
-  <!-- Footer -->
   <footer class="footer">
     <div class="container">
-      <p>&copy; 2025 Checkout Seguro. Todos os direitos reservados.</p>
+      <p>&copy; 2025 | A3 - Inteligência Artificial - FraudGuard</p>
     </div>
   </footer>
 </body>
