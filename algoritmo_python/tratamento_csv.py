@@ -5,6 +5,7 @@ import os
 Primeiro passo é descompactar o arquivo e rodar este código, ele irá pegar a base de dados original
 fazer a exclusão das colunas desnecessárias e substituir o arquivo original. Isso para não ter um arquivo 
 pesado dentro da pasta.
+Para baixar a base de dados original, ela se econtra no link:
 https://www.kaggle.com/datasets/kelvinkelue/credit-card-fraud-prediction
 '''
 
