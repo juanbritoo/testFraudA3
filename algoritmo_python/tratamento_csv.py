@@ -2,6 +2,7 @@ import pandas as pd
 import os  
 
 '''
+Objetivo: Remover colunas inúteis
 Primeiro passo é descompactar o arquivo e rodar este código, ele irá pegar a base de dados original
 fazer a exclusão das colunas desnecessárias e substituir o arquivo original. Isso para não ter um arquivo 
 pesado dentro da pasta.
