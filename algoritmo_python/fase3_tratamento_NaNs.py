@@ -23,5 +23,5 @@ df[['month','day','day_of_week','hour']] = df[['month','day','day_of_week','hour
 novo_caminho = os.path.join(os.path.dirname(caminho_arquivo), "A3 - Fraud Guard - NaNsTratado.csv")
 df.to_csv(novo_caminho, index=False, encoding="latin-1", sep=';')
 
-print("✅ Tratamento de NaNs concluído!")
+print("Tratamento de NaNs concluído!")
 print(df.isnull().sum())
