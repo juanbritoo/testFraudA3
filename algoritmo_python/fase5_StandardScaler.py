@@ -20,14 +20,15 @@ df['amt_scaled'] = scaler.fit_transform(df[['amt']])
 
 
 df = df.drop(columns=['amt'])
-df = df.rename(columns={'amt_scaled': 'amt'})
 
-novo_caminho = r"C:\Users\juan_\Downloads\testFraudA3-main"
-os.makedirs(novo_caminho, exist_ok=True)  
 
-caminho_scaler = r"C:\Users\juan_\Downloads\testFraudA3-main\algoritmo_python\scaler_final.joblib"
-joblib.dump(scaler, caminho_scaler)
+joblib.dump(scaler, os.path.join(os.path.dirname(caminho_arquivo), 'scaler_final.joblib'))
+
+
+novo_caminho = os.path.join(os.path.dirname(caminho_arquivo), "A3 - Fraud Guard - BasePronta.csv")
+df.to_csv(novo_caminho, index=False, encoding='latin-1', sep=';')
 
 print("Escalonamento Concluído")
+print(df.head())
 
 #Utilize: pip install scikit-learn > serve para rodar o sklearn no vsCode
