@@ -23,12 +23,16 @@ X_test = pd.read_csv(X_test_path, sep=',', encoding='latin-1')
 y_test = pd.read_csv(y_test_path, sep=',', encoding='latin-1')
 
 
+'''
+Objetivo: Treinar o Modelo de Random Forest para a tomada de decisão de fraudes
+O funcionamento basicamente funciona criando 200 árvores, com nível de profundidade 10, ou seja faz 10 'perguntas'
+sobre a transação e divisão de 10 (10 trasações a se analisar), para evitar overfiting.
+'''
+
 if y_train.shape[1] > 1:
     y_train = y_train.iloc[:, 0]
 if y_test.shape[1] > 1:
     y_test = y_test.iloc[:, 0]
-
-
 
 
 model = RandomForestClassifier(
@@ -39,9 +43,7 @@ model = RandomForestClassifier(
     n_jobs=-1             
 )
 
-
 model.fit(X_train, y_train)
-
 
 y_pred = model.predict(X_test)
 y_prob = model.predict_proba(X_test)[:, 1]
