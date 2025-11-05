@@ -8,6 +8,7 @@ y_train = pd.read_csv(r'C:\Users\juan_\Downloads\testFraudA3-main\algoritmosPyth
 
 '''
 Objetivo: Aplicar nos dados de treino para equilibrar as classes is_fraud.
+O smote basicamente irá criar dados sintéticos, para aprender melhor a detectar uma transação fraudulenta.
 '''
 
 print("Antes do SMOTE:")
