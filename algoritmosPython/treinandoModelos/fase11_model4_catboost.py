@@ -52,8 +52,7 @@ print("AUC:", roc_auc_score(y_test, y_prob))
 print("\nMatriz de Confusão:\n", confusion_matrix(y_test, y_pred))
 
 pasta_destino = r"C:\Users\juan_\Downloads\testFraudA3-main\algoritmosPython\treinandoModelos"
-model_path = os.path.join(pasta_destino, "modelo5_catboost.pkl")
+model_path = os.path.join(pasta_destino, "modelo4_catboost.pkl")
 joblib.dump(model, model_path)
-
 
 #Rode no terminal: pip install catboost
