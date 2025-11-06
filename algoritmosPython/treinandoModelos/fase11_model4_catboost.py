@@ -18,9 +18,8 @@ X_test = pd.read_csv(X_test_path, sep=',', encoding='latin-1')
 y_test = pd.read_csv(y_test_path, sep=',', encoding='latin-1')
 
 '''
-Objetivo: Treinar o CatBoost - algoritmo que trata features categóricas 
-de forma nativa usando "ordered boosting", uma abordagem única que previne
-overfitting de forma inovadora.
+Objetivo: Treinar o CatBoost, algoritmo que trata features categóricas 
+de forma nativa usando "ordered boosting". Ele atribuiu peso as fraudes, balanceando o dataSet.
 '''
 
 if y_train.shape[1] > 1:
