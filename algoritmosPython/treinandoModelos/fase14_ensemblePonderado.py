@@ -30,6 +30,11 @@ if y_train.shape[1] > 1:
 if y_test.shape[1] > 1:
     y_test = y_test.iloc[:, 0]
 
+'''
+Objetivo: Criar um modelo de 'votação' onde cada modelo de IA, irá dar sua opnião probabilística, e cada modelo
+vota se é fraude ou não. Porém aplicando pesos para os modelos que tiveram os melhores resultados.
+'''
+
 ensemble_ponderado = VotingClassifier(
     estimators=[
         ('xgboost', modelo3),
