@@ -7,59 +7,96 @@
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
-  <!-- Header -->
+ 
   <header class="header">
     <div class="container">
       <h1 class="logo">FraudGuard - Checkout Seguro</h1>
-      <p class="tagline">Preencha os dados abaixo para concluir sua transação</p>
+      <p class="tagline">Preencha os dados da transação para análise de segurança</p>
     </div>
   </header>
 
   <main class="main">
     <div class="checkout-container">
       <div class="checkout-header">
-        <h2>Pagamento</h2>
-        <p>Insira as informações do cartão e da transação</p>
+        <h2>Análise de Transação</h2>
+        <p>Insira as informações para verificação de segurança</p>
       </div>
 
-      <form action="/predict" method="post" class="checkout-form">
-
+      <form id="transactionForm" class="checkout-form">
+       
         <div class="form-section">
-          <h3>Informações do Cartão</h3>
+          <h3>Informações Pessoais</h3>
           <div class="form-row">
             <div class="form-group">
-              <label for="card_name">Nome do Titular</label>
-              <input type="text" id="card_name" name="card_name" required placeholder="Nome completo como no cartão">
-            </div>
-            <div class="form-group">
-              <label for="card_type">Tipo de Cartão</label>
-              <select id="card_type" name="card_type" required>
+              <label for="gender">Gênero</label>
+              <select id="gender" name="gender" required>
                 <option value="">Selecione</option>
-                <option value="credit">Crédito</option>
-                <option value="debit">Débito</option>
+                <option value="M">Masculino</option>
+                <option value="F">Feminino</option>
               </select>
             </div>
-          </div>
-
-          <div class="form-row">
             <div class="form-group">
-              <label for="card_number">Número do Cartão</label>
-              <input type="text" id="card_number" name="card_number" required placeholder="XXXX XXXX XXXX XXXX" maxlength="19">
-            </div>
-            <div class="form-group">
-              <label for="cvv">CVV</label>
-              <input type="password" id="cvv" name="cvv" required placeholder="123" maxlength="4">
-            </div>
-          </div>
-
-          <div class="form-row">
-            <div class="form-group">
-              <label for="expiry_date">Validade</label>
-              <input type="text" id="expiry_date" name="expiry_date" required placeholder="MM/AA" maxlength="5">
+              <label for="state">Estado (EUA)</label>
+              <select id="state" name="state" required>
+                <option value="">Selecione um estado</option>
+                <option value="AL">Alabama</option>
+                <option value="AK">Alaska</option>
+                <option value="AZ">Arizona</option>
+                <option value="AR">Arkansas</option>
+                <option value="CA">California</option>
+                <option value="CO">Colorado</option>
+                <option value="CT">Connecticut</option>
+                <option value="DE">Delaware</option>
+                <option value="FL">Florida</option>
+                <option value="GA">Georgia</option>
+                <option value="HI">Hawaii</option>
+                <option value="ID">Idaho</option>
+                <option value="IL">Illinois</option>
+                <option value="IN">Indiana</option>
+                <option value="IA">Iowa</option>
+                <option value="KS">Kansas</option>
+                <option value="KY">Kentucky</option>
+                <option value="LA">Louisiana</option>
+                <option value="ME">Maine</option>
+                <option value="MD">Maryland</option>
+                <option value="MA">Massachusetts</option>
+                <option value="MI">Michigan</option>
+                <option value="MN">Minnesota</option>
+                <option value="MS">Mississippi</option>
+                <option value="MO">Missouri</option>
+                <option value="MT">Montana</option>
+                <option value="NE">Nebraska</option>
+                <option value="NV">Nevada</option>
+                <option value="NH">New Hampshire</option>
+                <option value="NJ">New Jersey</option>
+                <option value="NM">New Mexico</option>
+                <option value="NY">New York</option>
+                <option value="NC">North Carolina</option>
+                <option value="ND">North Dakota</option>
+                <option value="OH">Ohio</option>
+                <option value="OK">Oklahoma</option>
+                <option value="OR">Oregon</option>
+                <option value="PA">Pennsylvania</option>
+                <option value="RI">Rhode Island</option>
+                <option value="SC">South Carolina</option>
+                <option value="SD">South Dakota</option>
+                <option value="TN">Tennessee</option>
+                <option value="TX">Texas</option>
+                <option value="UT">Utah</option>
+                <option value="VT">Vermont</option>
+                <option value="VA">Virginia</option>
+                <option value="WA">Washington</option>
+                <option value="WV">West Virginia</option>
+                <option value="WI">Wisconsin</option>
+                <option value="WY">Wyoming</option>
+                <option value="DC">District of Columbia</option>
+              </select>
+              <small style="color: #666; font-size: 0.8rem;">Selecione o estado onde a transação ocorreu</small>
             </div>
           </div>
         </div>
 
+       
         <div class="form-section">
           <h3>Detalhes da Transação</h3>
 
@@ -67,86 +104,167 @@
             <label class="category-card">
               <input type="radio" name="category" value="travel" required>
               <div class="category-content">
-                ✈️ <span>Travel</span>
+                ✈️ <span>Viagens</span>
               </div>
             </label>
 
             <label class="category-card">
-              <input type="radio" name="category" value="electronics">
+              <input type="radio" name="category" value="shopping_net">
               <div class="category-content">
-                💻 <span>Electronics</span>
+                🛒 <span>Compras Online</span>
               </div>
             </label>
 
             <label class="category-card">
-              <input type="radio" name="category" value="clothing">
+              <input type="radio" name="category" value="misc_pos">
               <div class="category-content">
-                👕 <span>Clothing</span>
+                💳 <span>Diversos POS</span>
               </div>
             </label>
 
             <label class="category-card">
-              <input type="radio" name="category" value="restaurants">
+              <input type="radio" name="category" value="entertainment">
               <div class="category-content">
-                🍽️ <span>Restaurants</span>
+                🎭 <span>Entretenimento</span>
               </div>
             </label>
 
             <label class="category-card">
-              <input type="radio" name="category" value="groceries">
+              <input type="radio" name="category" value="grocery_pos">
               <div class="category-content">
-                🛒 <span>Groceries</span>
+                🛍️ <span>Mercado Presencial</span>
+              </div>
+            </label>
+
+            <label class="category-card">
+              <input type="radio" name="category" value="gas_transport">
+              <div class="category-content">
+                ⛽ <span>Combustível</span>
+              </div>
+            </label>
+
+            <label class="category-card">
+              <input type="radio" name="category" value="home">
+              <div class="category-content">
+                🏠 <span>Casa</span>
+              </div>
+            </label>
+
+            <label class="category-card">
+              <input type="radio" name="category" value="health_fitness">
+              <div class="category-content">
+                💊 <span>Saúde & Fitness</span>
+              </div>
+            </label>
+
+            <label class="category-card">
+              <input type="radio" name="category" value="food_dining">
+              <div class="category-content">
+                🍽️ <span>Restaurantes</span>
+              </div>
+            </label>
+
+            <label class="category-card">
+              <input type="radio" name="category" value="grocery_net">
+              <div class="category-content">
+                📱 <span>Mercado Online</span>
+              </div>
+            </label>
+
+            <label class="category-card">
+              <input type="radio" name="category" value="kids_pets">
+              <div class="category-content">
+                👶 <span>Crianças & Pets</span>
+              </div>
+            </label>
+
+            <label class="category-card">
+              <input type="radio" name="category" value="misc_net">
+              <div class="category-content">
+                🌐 <span>Diversos Online</span>
+              </div>
+            </label>
+
+            <label class="category-card">
+              <input type="radio" name="category" value="personal_care">
+              <div class="category-content">
+                💇 <span>Cuidados Pessoais</span>
+              </div>
+            </label>
+
+            <label class="category-card">
+              <input type="radio" name="category" value="shopping_pos">
+              <div class="category-content">
+                🏪 <span>Compras Presencial</span>
               </div>
             </label>
           </div>
 
           <div class="form-row">
             <div class="form-group">
-              <label for="amount">Valor da Compra (R$)</label>
-              <input type="number" id="amount" name="amount" step="0.01" min="0" required placeholder="0.00">
+              <label for="amt">Valor da Transação (R$)</label>
+              <input type="number" id="amt" name="amt" step="0.01" min="0" required placeholder="0.00">
+            </div>
+          </div>
+        </div>
+
+        
+        <div class="form-section">
+          <h3>Data e Hora</h3>
+          <div class="form-row">
+            <div class="form-group">
+              <label for="month">Mês</label>
+              <input type="number" id="month" name="month" min="1" max="12" required placeholder="1-12">
             </div>
             <div class="form-group">
-              <label for="transaction_type">Tipo de Transação</label>
-              <select id="transaction_type" name="transaction_type" required>
+              <label for="day">Dia</label>
+              <input type="number" id="day" name="day" min="1" max="31" required placeholder="1-31">
+            </div>
+            <div class="form-group">
+              <label for="day_of_week">Dia da Semana</label>
+              <select id="day_of_week" name="day_of_week" required>
                 <option value="">Selecione</option>
-                <option value="pos">POS (Maquininha)</option>
-                <option value="banktransfer">Transferência de Banco</option>
-                <option value="online">Online</option>
-                <option value="atm">ATM Withdrawal (Caixa Eletrônico)</option>
+                <option value="1">Segunda-feira</option>
+                <option value="2">Terça-feira</option>
+                <option value="3">Quarta-feira</option>
+                <option value="4">Quinta-feira</option>
+                <option value="5">Sexta-feira</option>
+                <option value="6">Sábado</option>
+                <option value="7">Domingo</option>
+              </select>
+            </div>
+          </div>
+
+          <div class="form-row">
+            <div class="form-group">
+              <label for="hour">Hora do Dia</label>
+              <input type="number" id="hour" name="hour" min="0" max="23" required placeholder="0-23">
+              <small style="color: #666; font-size: 0.8rem;">0 = meia-noite, 23 = 23h</small>
+            </div>
+            <div class="form-group">
+              <label for="part_of_day">Período do Dia</label>
+              <select id="part_of_day" name="part_of_day" required>
+                <option value="">Selecione</option>
+                <option value="morning">Manhã (6h-11h)</option>
+                <option value="afternoon">Tarde (12h-17h)</option>
+                <option value="evening">Noite (18h-21h)</option>
+                <option value="night">Madrugada (22h-5h)</option>
               </select>
             </div>
           </div>
         </div>
 
-        <div class="form-section">
-          <h3>Informações do Dispositivo e Localização</h3>
-          <div class="form-row">
-            <div class="form-group">
-              <label for="device">Tipo de Dispositivo</label>
-              <select id="device" name="device" required>
-                <option value="">Selecione</option>
-                <option value="laptop">Laptop</option>
-                <option value="mobile">Mobile</option>
-                <option value="tablet">Tablet</option>
-              </select>
-            </div>
-            <div class="form-group">
-              <label for="location">Localização</label>
-              <select id="location" name="location" required>
-                <option value="">Selecione</option>
-                <option value="newyork">New York</option>
-                <option value="london">London</option>
-                <option value="mumbai">Mumbai</option>
-                <option value="sydney">Sydney</option>
-                <option value="tokyo">Tokyo</option>
-              </select>
-            </div>
+       
+        <div id="resultSection" class="form-section" style="display: none;">
+          <h3>Resultado da Análise</h3>
+          <div id="resultCard" class="result-card">
+            <div id="resultContent"></div>
           </div>
         </div>
 
         <div class="form-actions">
-          <button type="submit" class="btn btn-primary btn-large">Finalizar Compra</button>
-          <a href="#" class="btn btn-secondary btn-large">Voltar</a>
+          <button type="submit" class="btn btn-primary btn-large">Analisar Transação</button>
+          <button type="button" id="clearBtn" class="btn btn-secondary btn-large">Limpar</button>
         </div>
       </form>
     </div>
@@ -157,5 +275,7 @@
       <p>&copy; 2025 | A3 - Inteligência Artificial - FraudGuard</p>
     </div>
   </footer>
+
+  <script src="script.js"></script>
 </body>
 </html>
